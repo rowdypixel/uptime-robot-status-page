@@ -7,12 +7,21 @@ $(function() {
     $(apiKeys).each(function() {
         var url = 'https://api.uptimerobot.com/getMonitors?logs=1&alertContacts=1&responseTimes=1&statuses=1-2&responseTimesAverage=180&customUptimeRatio=30&format=json&noJsonCallback=1&apiKey=' + this;
         $.getJSON(url, function(result) {
-            var monitors = result.monitors.monitor;
-            $(monitors).each(function() {
-                console.log(this);
-                $('#results').append('<li>' + this.friendlyname + '</li>');
-            });
+            var monitor = result.monitors.monitor[0];
+            console.log(monitor);
+            if (monitor.status == 2) {
+                $.get('/tpl/up.html', null, function(result) {
+                    
+                    var finalTemplate = result;
+                    finalTemplate = finalTemplate.replace("{{monitor.name}}", monitor.friendlyname);
+                    finalTemplate = finalTemplate.replace("{{monitor.uptime}}", monitor.alltimeuptimeratio);
+                    $('#results').append(finalTemplate);
+                });
+            }
 
+            else {//if (monitor.status == '1') {
+
+            }
         });
     });
 });

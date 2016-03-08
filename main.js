@@ -1,9 +1,19 @@
-(function() {
-    var apiKey = 'u147240-04ca80f5f67800d222f88b33';
-    var url = 'https://api.uptimerobot.com/getMonitors?logs=1&alertContacts=1&responseTimes=1&responseTimesAverage=180&monitors=15830-32696&customUptimeRatio=30&format=json&apiKey = ' + apiKey;
-    
-    $.getJson(url, function(result){
-        console.log(result);
+$(function() {
+    var apiKeys = [
+        'm776869201-5fb62143a517518855535060', // Beef calc
+        'm776200798-7f01a10f2fa63a5e45f5b05b' // personal site
+    ];
+
+    $(apiKeys).each(function() {
+        var url = 'https://api.uptimerobot.com/getMonitors?logs=1&alertContacts=1&responseTimes=1&statuses=1-2&responseTimesAverage=180&customUptimeRatio=30&format=json&noJsonCallback=1&apiKey=' + this;
+        $.getJSON(url, function(result) {
+            var monitors = result.monitors.monitor;
+            $(monitors).each(function() {
+                console.log(this);
+                $('#results').append('<li>' + this.friendlyname + '</li>');
+            });
+
+        });
     });
 });
 

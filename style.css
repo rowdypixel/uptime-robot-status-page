@@ -1,6 +1,25 @@
+.rounded-shadowed-rectangle {
+    border-radius: 5px;
+}
+.text-right {
+    text-align: right;
+}
+.overall-status {
+    padding: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.site-status {
+    list-style: none;
+}
 .status-error {
     background: red;
 }
 .status-operational {
-    background: green;
+    background: #90ee90;
+    color: green;
 }
+

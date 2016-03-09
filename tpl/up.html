@@ -1,5 +1,11 @@
-<li class="status-operational">
-    <h1>{{monitor.name}}</h1>
-    <h2>UP</h2>
-    <h3>Uptime: {{monitor.uptime}}%</h3>
-</li>
+<div class="container site-status status-operational">
+    <div class="row site-summary">
+        <div class="column column-50">{{monitor.name}}</div>
+        <div class="column column-50 text-right">Available</div>
+    </div>
+    <div class="row site-details">
+        <div class="column">
+        Uptime: {{monitor.uptime}}%
+        </div>
+    </div>
+</div>

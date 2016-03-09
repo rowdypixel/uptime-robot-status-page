@@ -3,7 +3,7 @@ $(function() {
         'm776869201-5fb62143a517518855535060', // Beef calc
         //'m776200798-7f01a10f2fa63a5e45f5b05b' // personal site
     ];
-    
+
     var anySitesDown = false;
 
     $(apiKeys).each(function() {
@@ -11,32 +11,31 @@ $(function() {
         $.getJSON(url, function(result) {
             var monitor = result.monitors.monitor[0];
             console.log(monitor);
-            if (monitor.status == 2) {
-                $.get('/tpl/up.html', null, function(result) {
-                    
-                    var finalTemplate = result;
-                    finalTemplate = finalTemplate.replace("{{monitor.name}}", monitor.friendlyname);
-                    finalTemplate = finalTemplate.replace("{{monitor.uptime}}", monitor.alltimeuptimeratio);
-                    $('#results').append(finalTemplate);
-                });
-            }
-
-            else {//if (monitor.status == '1') {
-                anySitesDown = true;
-                $.get('/tpl/down.html', null, function(result) {
-                    
-                    var finalTemplate = result;
-                    finalTemplate = finalTemplate.replace("{{monitor.name}}", monitor.friendlyname);
-                    finalTemplate = finalTemplate.replace("{{monitor.uptime}}", monitor.alltimeuptimeratio);
-                    $('#results').append(finalTemplate);
-                });
-            }
+            loadTplForMonitor(monitor);
         });
     });
-    
-    if(anySitesDown)
+
+    if (anySitesDown)
         $('.overall-status').addClass("status-error");
     else
         $('.overall-status').addClass("status-operational");
+
+    function loadTplForMonitor(monitor) {
+        var path = '/tpl/up.html';
+        if (monitor.status != 2)
+            path = '/tpl/down.html';
+
+        $.get(path, null, function(result) {
+            var finalTemplate = result;
+            finalTemplate = finalTemplate.replace("{{monitor.name}}", monitor.friendlyname);
+            finalTemplate = finalTemplate.replace("{{monitor.uptime}}", monitor.alltimeuptimeratio);
+            $('#results').append(finalTemplate);
+
+            $('.site-status .site-summary').click(function() {
+                $(this).siblings('.site-details').toggle();
+            });
+
+        });
+    }
 });
 

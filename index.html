@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='/milligram.min.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
@@ -13,14 +14,25 @@
     <div class="container">
         <div class="row">
             <div class="column">
-                <div class="overall-status">Overall status text goes here and is typically no longer than this.</div>
+                <div class="overall-status site-status status-intermediate">
+                    <div class="rounded site-summary">
+                        Loading sites...
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <br />
-    <div class="container" id="results">
-        <!-- Websites will go here -->
-    </div>
-</body>
+        <div class="container">
+            <img class="logo" src="http://dummyimage.com/250x150/000/fff" />
+        </div>
+        <div class="container site-category" id="apps">
+            <h5>Web apps</h5>
+            <!-- Websites will go here -->
+        </div>
 
+        <div class="container site-category" id="sites">
+            <h5>Web sites</h5>
+            <!-- Websites will go here -->
+        </div>
+<input type="hidden" id="all-sites-operational">
+</body>
 </html>

@@ -1,5 +1,15 @@
-<li class="site-status status-error">
-    <h1>{{monitor.name}}</h1>
-    <h2>DOWN</h2>
-    <h3>DOWN TIME: {{monitor.uptime}}%</h3>
-</li>
+<div class="site site-status status-error">
+    <div class="rounded site-summary">
+        <div class="row">
+            <div class="column">{{monitor.name}}</div>
+            <div class="column text-right">Unavailable</div>
+        </div>
+    </div>
+    <div class="rounded-bottom site-details hidden">
+        <div class="row">
+            <div class="column">
+                Uptime: {{monitor.uptime}}%
+            </div>
+        </div>
+    </div>
+</div>

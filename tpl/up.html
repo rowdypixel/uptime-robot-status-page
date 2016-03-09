@@ -1,11 +1,15 @@
-<div class="container site-status status-operational">
-    <div class="row site-summary">
-        <div class="column column-50">{{monitor.name}}</div>
-        <div class="column column-50 text-right">Available</div>
+<div class="site site-status status-operational">
+    <div class="rounded site-summary">
+        <div class="row">
+            <div class="column">{{monitor.name}}</div>
+            <div class="column text-right">Available</div>
+        </div>
     </div>
-    <div class="row site-details">
-        <div class="column">
-        Uptime: {{monitor.uptime}}%
+    <div class="rounded-bottom site-details hidden">
+        <div class="row">
+            <div class="column">
+                Uptime: {{monitor.uptime}}%
+            </div>
         </div>
     </div>
 </div>

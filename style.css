@@ -1,25 +1,54 @@
-.rounded-shadowed-rectangle {
+h5 {
+    margin-bottom: 0;
+}
+
+.rounded {
     border-radius: 5px;
+}
+.rounded-top {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.rounded-bottom {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 .text-right {
     text-align: right;
 }
-.overall-status {
-    padding: 10px;
-}
-
 .hidden {
     display: none;
 }
-
-.site-status {
-    list-style: none;
+.overall-status {
+    margin-bottom: 15px;
 }
-.status-error {
+.site {
+    margin-top: 15px;
+}
+.site-category {
+    margin-top: 25px;
+}
+.site-status > div {
+    padding: 10px 20px;
+}
+.status-intermediate .site-summary {
+    background: lightyellow;
+    color: yellow;
+}
+.status-error .site-summary {
     background: red;
+    color: crimson;
 }
-.status-operational {
+.status-error .site-details {
+    background: crimson;
+    color: red;
+}
+.status-operational .site-summary {
     background: #90ee90;
     color: green;
+}
+.status-operational .site-details {
+    color: lightgreen;
+    background: green;
 }
 

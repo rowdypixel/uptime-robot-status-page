@@ -11,7 +11,7 @@ $(function() {
     var anySitesDown = false;
 
     loadMonitorsInCategory(appApiKeys, '#apps');
-    //loadMonitorsInCategory(sitesApiKeys, '#sites');
+    loadMonitorsInCategory(sitesApiKeys, '#sites');
 
     $(document).ajaxStop(function() {
         $('.overall-status').removeClass('status-intermediate');

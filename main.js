@@ -1,16 +1,19 @@
 $(function() {
     var appApiKeys = [
         'm776869201-5fb62143a517518855535060', // Beef calc
-        //'m776200798-7f01a10f2fa63a5e45f5b05b' // personal site
+        'm777533370-d0c467f7d0d2a4f5f5fe55e5' // data cap
+    ];
+    
+    var sitesApiKeys = [
+        'm776200798-7f01a10f2fa63a5e45f5b05b' // personal site
     ];
 
     var anySitesDown = false;
 
     loadMonitorsInCategory(appApiKeys, '#apps');
-    loadMonitorsInCategory(appApiKeys, '#sites');
+    //loadMonitorsInCategory(sitesApiKeys, '#sites');
 
     $(document).ajaxStop(function() {
-        console.log($('all-sites-operational').val());
         $('.overall-status').removeClass('status-intermediate');
         if (anySitesDown) {
             $('.overall-status').addClass("status-error");
@@ -44,6 +47,10 @@ $(function() {
             var finalTemplate = result;
             finalTemplate = finalTemplate.replace("{{monitor.name}}", monitor.friendlyname);
             finalTemplate = finalTemplate.replace("{{monitor.uptime}}", monitor.alltimeuptimeratio);
+            finalTemplate = finalTemplate.replace("{{monitor.link}}", monitor.url);
+            finalTemplate = finalTemplate.replace("{{monitor.checktime}}", monitor.responsetime[0].datetime);
+            finalTemplate = finalTemplate.replace("{{monitor.responsetime}}", monitor.responsetime[0].value);
+            
             $(categorySelector).append(finalTemplate);
 
             $('.site.site-status .site-summary').unbind('click');
